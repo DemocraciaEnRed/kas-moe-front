@@ -1,48 +1,47 @@
 <script>
-	import Counter from '$components/Counter.svelte';
+	import Button from '$components/Button.svelte';
+	import Input from '$components/Input.svelte';
 </script>
 
 <main>
-	<h1>Hello world!</h1>
-
-	<Counter/>
-	<p>Visit the <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
+  <div class="box">
+    <h2>
+      Ingresa tu numero de identificación
+    </h2>
+    <Input label="Nro de documento"/>
+    <Button>
+      Validar
+    </Button>
+    <h2>
+      También puedes...
+    </h2>
+    <Button class="green large">
+      Ingresar código
+      <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.5938 3.32812C13.9922 1.6875 11.8047 0.75 9.46094 0.75C4.69531 0.75 0.789062 4.65625 0.789062 9.42188C0.789062 10.9844 1.21875 12.4688 1.96094 13.7578L0.75 18.25L5.32031 17.0781C6.60938 17.7422 8.01562 18.1328 9.46094 18.1328C14.2656 18.1328 18.25 14.2266 18.25 9.46094C18.25 7.11719 17.2344 4.96875 15.5938 3.32812ZM9.46094 16.6484C8.17188 16.6484 6.92188 16.2969 5.78906 15.6328L5.55469 15.4766L2.82031 16.2188L3.5625 13.5625L3.36719 13.2891C2.66406 12.1172 2.27344 10.7891 2.27344 9.42188C2.27344 5.47656 5.51562 2.23438 9.5 2.23438C11.4141 2.23438 13.2109 2.97656 14.5781 4.34375C15.9453 5.71094 16.7656 7.50781 16.7656 9.46094C16.7656 13.4062 13.4453 16.6484 9.46094 16.6484ZM13.4453 11.2578C13.2109 11.1406 12.1562 10.6328 11.9609 10.5547C11.7656 10.4766 11.6094 10.4375 11.4531 10.6719C11.3359 10.8672 10.9062 11.375 10.7891 11.5312C10.6328 11.6484 10.5156 11.6875 10.3203 11.5703C9.03125 10.9453 8.21094 10.4375 7.35156 8.99219C7.11719 8.60156 7.58594 8.64062 7.97656 7.82031C8.05469 7.66406 8.01562 7.54688 7.97656 7.42969C7.9375 7.3125 7.46875 6.25781 7.3125 5.82812C7.11719 5.39844 6.96094 5.4375 6.80469 5.4375C6.6875 5.4375 6.53125 5.4375 6.41406 5.4375C6.25781 5.4375 6.02344 5.47656 5.82812 5.71094C5.63281 5.94531 5.08594 6.45312 5.08594 7.50781C5.08594 8.60156 5.82812 9.61719 5.94531 9.77344C6.0625 9.89062 7.46875 12.0781 9.65625 13.0156C11.0234 13.6406 11.5703 13.6797 12.2734 13.5625C12.6641 13.5234 13.5234 13.0547 13.7188 12.5469C13.9141 12.0391 13.9141 11.6094 13.8359 11.5312C13.7969 11.4141 13.6406 11.375 13.4453 11.2578Z" fill="#F8F8F8"/>
+      </svg>
+    </Button>
+    <h3>
+      Tengo problemas para ingresar
+    </h3>
+  </div>
 </main>
 
 <style>
-	:root {
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	}
+  .box {
+    width: 50em;
+    height: 37.5em;
+    margin-top: 3rem;
+    gap: 1em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: solid 1px #000;
+    background: #fff;
+  }
 
-	main {
-		text-align: center;
-		padding: 1em;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4rem;
-		font-weight: 100;
-		line-height: 1.1;
-		margin: 4rem auto;
-		max-width: 14rem;
-	}
-
-	p {
-		max-width: 14rem;
-		margin: 2rem auto;
-		line-height: 1.35;
-	}
-
-	@media (min-width: 480px) {
-		h1 {
-			max-width: none;
-		}
-
-		p {
-			max-width: none;
-		}
-	}
+  h2 {
+    text-transform: uppercase;
+  }
 </style>
