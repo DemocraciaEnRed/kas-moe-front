@@ -1,7 +1,6 @@
 <script>
-  import "./_global.css";
-
-  let title = "Identificate";
+  import './_global.css';
+  import { title } from './store';
 </script>
 
 <div class="layout">
@@ -15,12 +14,14 @@
     </div>
     <div class="title">
       <h2>
-        {title}
+        {$title}
       </h2>      
     </div>
     <div class="action">
       <p>
-        Volver a la votación
+        <a href="/auth/identify">
+          Volver a la votación
+        </a>
       </p>
     </div>
   </div>
