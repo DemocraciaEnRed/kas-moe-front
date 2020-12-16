@@ -8,3 +8,8 @@ body {
   user-select: none;
   font-family: 'Oswald', sans-serif;
 }
+
+a {
+  color: #111;
+  text-decoration: none;
+}
