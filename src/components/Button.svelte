@@ -2,9 +2,11 @@
   let classes = '';
   export {classes as class};
   export let text = 'Button';  
+  export let onclick = null;
 </script>
 
-<button class="{classes}">
+<button class="{classes}"
+  on:click={onclick}>
   <slot>
     {text}
   </slot>
@@ -33,6 +35,12 @@
 
   .green {
     background: #31A608;
+  }
+
+  .white {
+    border: solid 1px;
+    background: #fff;
+    color: #111;
   }
 
   .large {
