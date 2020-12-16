@@ -1,10 +1,12 @@
 <script>
-  export let label = "";
+  export let prop = '';
+  export let label = '';
 </script>
 
 <div class="input-field">
   <label for={label}>{label}</label> 
-  <input name={label}>
+  <input name={label}
+    bind:value={prop}>
 </div>
 
 <style>
