@@ -16,7 +16,7 @@
   button {
     color: #F8F8F8;
     background: #000;
-    min-height: 42px;
+    height: 42px;
     min-width: 9.5em;
     font-family: Oswald;
     font-style: normal;
