@@ -21,40 +21,59 @@
   <Box class="xsm-height row justify-between">
     <div class="progress">  
       <h2>
-        Ingreso de tus datos
+        Validaremos tu documento
       </h2>
       <h2>
-        1/3
+        2/3
       </h2>
-      <Button onclick={()=>goto('/auth/register/picture')}>
+      <Button onclick={()=>goto('/auth/register/success')}>
         Siguiente
       </Button>
     </div>
   </Box>
-  <Box class="xsm-margin-top l-width">
+  <Box class="xsm-margin-top l-width justify-initial">
     <div class="step">
       <h2>
-        Registro del votante
+        Agrega una foto de tu documento
       </h2>
-      <Input label="Nro de documento" bind:prop="{InputValue}"/>
-      <div class="two-columns">  
-        <Input label="Nombre" bind:prop="{InputValue}"/>
-        <Input label="Apellido" bind:prop="{InputValue}"/>
-        <Input label="Email" bind:prop="{InputValue}"/>
-        <Input label="Confirmar tu email" bind:prop="{InputValue}"/>
+      <div class="two-columns">
+        <div>
+          <h3>Frente del documento</h3>
+          <p>
+            Puedes arrastar la imagen o cargarla<br>desde tus archivos
+          </p>
+          <Button>
+            Cargar foto
+          </Button>
+        </div>
+        <img src="/documento-frente.svg" alt="Frente del Documento"
+          style="border: solid 1px"/>
+        <div>
+          <h3>Dorso del documento</h3>
+          <p>
+            Puedes arrastar la imagen o cargarla<br>desde tus archivos
+          </p>
+          <Button>
+            Cargar foto
+          </Button>
+        </div>
+        <img src="/documento-dorso.svg" alt="Dorso del Documento"/>
       </div>
-      <p>
-        ¿Aceptas los terminos de votación?
-      </p>
+
     </div>
   </Box>
 </main>
 
 <style>
-  h2, p {
+  h2, h3, p {
     font-weight: 400;
     align-self: center;
     text-transform: uppercase;
+  }
+
+  p {
+    text-transform: initial;
+    font-family: 'Quicksand', sans-serif;
   }
 
   main {
@@ -75,13 +94,17 @@
     width: 100%;
     display: grid;
     justify-content: space-around;
-    grid-template-rows: 1fr 1fr 2fr 1fr;   
+    grid-template-rows: 1fr 3fr;   
   }
-  
+
   .two-columns {
     display: grid;
-    grid-row-gap: 2.5em;
-    grid-column-gap: 5em;
-    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 3em;
+    grid-column-gap: 2em;
+    grid-template-columns: 3fr 2fr;
+  }
+
+  img {
+    justify-self: center;
   }
 </style>
