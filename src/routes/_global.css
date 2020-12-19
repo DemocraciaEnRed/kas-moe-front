@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('http://fonts.cdnfonts.com/css/helvetica-255?styles=15805,15802');
+
+body {
+  margin: 0;
+  user-select: none;
+  font-family: 'Oswald', sans-serif;
+}
+
+a {
+  color: #111;
+  text-decoration: none;
+}

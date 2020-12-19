@@ -1,34 +1,42 @@
 <script>
-	let count = 0;
+  import { onMount } from 'svelte';
 
-	const increment = () => {
-		count += 1;
-	};
+  let seconds, minutes, hours;  
+
+  onMount(() => {
+  });
 </script>
 
-<button on:click={increment}>
-	Clicks: {count}
-</button>
+<div>
+  <div>
+    <p>20</p>hs
+  </div>
+  <div>
+    <p>50</p>min
+  </div>
+  <div>
+    <p>10</p>seg
+  </div>
+</div>
 
 <style>
-	button {
-		font-family: inherit;
-		font-size: inherit;
-		padding: 1em 2em;
-		color: #ff3e00;
-		background-color: rgba(255, 62, 0, 0.1);
-		border-radius: 2em;
-		border: 2px solid rgba(255, 62, 0, 0);
-		outline: none;
-		width: 200px;
-		font-variant-numeric: tabular-nums;
-	}
+  div {
+    display: flex; 
+    align-items: center;
+    font-size: 35px;
+    font-weight: 300;
+    justify-content: center;
+  }
 
-	button:focus {
-		border: 2px solid #ff3e00;
-	}
+  div div {
+    padding-right: .75em;
+    gap: .25em;
+  }
 
-	button:active {
-		background-color: rgba(255, 62, 0, 0.2);
-	}
+  p {
+    border: solid 1px;
+    line-height: 70px;
+    width: 70px;
+    height: 70px;
+  }
 </style>
