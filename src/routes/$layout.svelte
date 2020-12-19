@@ -36,7 +36,7 @@
        </p>
      </div>
      <div class="author">
-        <p>
+       <p>
          Desarrollado con ♥<br>por <b>Democracia en Red</b>
        </p>
       </div>
