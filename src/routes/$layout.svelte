@@ -1,6 +1,6 @@
 <script>
   import './_global.css';
-  import { title } from './store';
+  import { title } from '$util/store';
 </script>
 
 <div class="layout">
@@ -13,9 +13,9 @@
       </svg>
     </div>
     <div class="title">
-      <h2>
+      <h1>
         {$title}
-      </h2>      
+      </h1>
     </div>
     <div class="action">
       <p>
@@ -45,11 +45,14 @@
 </div>
 
 <style>
+  h1, h2, h3 {
+    font-weight: 500;
+  }
   .layout {
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 5.25em 1fr 9em;
+    grid-template-rows: 5.75em 1fr 9em;
     gap: 0px 0px;
     grid-template-areas:
       "header"

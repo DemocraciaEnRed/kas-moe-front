@@ -1,5 +1,5 @@
 <script>
-  import { title } from '../store';
+  import { title } from '$util/store';
  	import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
   import Box from '$components/Box.svelte';

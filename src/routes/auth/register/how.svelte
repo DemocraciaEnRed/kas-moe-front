@@ -2,7 +2,7 @@
   import { goto } from '$app/navigation';
   import Box from '$components/Box.svelte';
 	import Button from '$components/Button.svelte';
-  import { title } from '../../store.js';
+  import { title } from '$util/store';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
