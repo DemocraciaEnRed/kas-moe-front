@@ -43,9 +43,77 @@
     };
     */
   }
+
+  let crono = `
+    <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${items[0].draw}" />
+    </svg>
+  `;
+
+  let action = `
+    <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${items[1].draw}" />
+    </svg>
+  `;
+
+  let user = `
+    <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${items[2].draw}" />
+    </svg>
+  `;
+
+  let metric = `
+    <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${items[3].draw}" />
+    </svg>
+  `;
+
+  let data = `
+    <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${items[4].draw}" />
+    </svg>
+  `;
+
+  import Search from './Search.svelte';
+  const onPick = ({detail}) => selectedOption = detail;
+  let options = [
+    { label: "Agregar un usuario", icon: action },
+    { label: "Modificar permisos de un usuario", icon: action },
+    { label: "Modificar el cronograma", icon: crono },
+    { label: "Editar el padrón", icon: action },
+    { label: "Generar reportes", icon: metric},
+    { label: "Ver el cronograma", icon: crono },
+    { label: "Ver el padrón", icon: data },
+  ];
+  let inputEl;
+  let selectedOption;
+  let value;
 </script>
 
 <style>
+  .search-header {
+    flex: auto;
+    display: flex;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .search-cancel {
+    flex: none;
+    font-size: 0;
+    border-radius: .375rem;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    padding: .125rem .375rem;
+  }
+
+  .search-cancel:before {
+    content: "Esc";
+    color: #9ca3af;
+    font-size: .875rem;
+    line-height: 1.25rem;
+  }
+
   .active {
     @apply bg-gray-200;
   }
@@ -174,8 +242,31 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
           </span>
-          <input type="text" placeholder="Buscar usuarios, acciones, métricas..."
-            class="text-lg px-4 py-3 rounded-md hover:bg-gray-100 lg:max-w-sm md:py-2 md:flex-1 focus:outline-none md:focus:bg-gray-100 md:focus:shadow md:focus:border"/>
+          <Search {options} {inputEl} bind:value on:pick={onPick} keys={['label', 'link', 'icon']}>
+            <span slot="input" class="flex mx-6 items-center border-b border-gray-200">
+              <form action role="search" novalidate class="search-header">
+                <span>
+                  <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                  </svg>
+                </span>            
+                <input type="text" bind:value bind:this={inputEl} placeholder="Buscar usuarios, acciones, métricas..."
+                  class="h-16 w-100 min-w-0 text-lg px-4 py-3 md:py-2 md:flex-1 bg-transparent focus:outline-none"/>
+              </form>
+              <button class="search-cancel">Cancelar búsqueda</button>
+            </span>
+            <span slot="item" let:option class="search-option">
+              <!-- 
+              <span class="search-icon">
+                {@html option.html.icon}
+              </span>
+              -->
+              <span class="block mt-1">
+                {@html option.html.icon}
+              </span>
+              {@html option.html.label}
+            </span>
+          </Search>
         </div>
 
         <!-- Navbar right -->
