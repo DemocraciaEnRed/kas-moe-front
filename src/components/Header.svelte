@@ -36,8 +36,8 @@
 </script>
 
 <div class="logos">
-  <img src="product.svg" alt="Logotipo de la plataforma" />
-  <img src="event.svg" alt="Logotipo del evento" />
+  <img class="max-w-none md:m-w-full" src="product.svg" alt="Logotipo de la plataforma" />
+  <img class="hidden md:block" src="event.svg" alt="Logotipo del evento" />
 </div>
 <div class="title">
   <h1>
@@ -79,7 +79,7 @@
   }
 
   .logos {
-    @apply px-10 flex items-center justify-around gap-x-3;
+    @apply px-10 flex items-center gap-x-8;
     grid-area: logos;
   }
 
@@ -89,7 +89,7 @@
   }
 
   .timer {
-    @apply flex gap-4 items-center;
+    @apply hidden md:flex gap-4 items-center;
   }
 
   .timer b {
