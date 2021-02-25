@@ -23,7 +23,11 @@ const preprocess = createPreprocessors({ sourceMap: !!sourcemap });
 const globalCSSWatchFiles = ["postcss.config.js", "tailwind.config.js", "src/global.pcss"];
 
 // Workaround for https://github.com/sveltejs/sapper/issues/1266
-const onwarn = (warning, _onwarn) => (warning.code === "CIRCULAR_DEPENDENCY" && /[/\\]@sapper[/\\]/.test(warning.message)) || console.warn(warning.toString());
+//const onwarn = (warning, _onwarn) => (warning.code === "CIRCULAR_DEPENDENCY" && /[/\\]@sapper[/\\]/.test(warning.message)) || console.warn(warning.toString());
+const onwarn = (warning, onwarn) =>
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	onwarn(warning);
 
 export default {
 	client: {
