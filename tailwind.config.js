@@ -27,6 +27,7 @@ module.exports = {
 		},
 		extend: {
 			colors: {
+				'moe-cyan-light': '#ecf4fe',
 				'moe-cyan': '#ecf2ff',
 				'moe-cyan-dark': '#d2ddff',
 				'moe-blue': '#181c8b',
@@ -39,6 +40,7 @@ module.exports = {
 				'moe-gray-medium': '#d8d8d8',
 				'moe-gray-light': '#d4d4d4',
 				'moe-orange': '#f06543',
+				'moe-orange-light': '#fef0ec',
 			},
 		},
 	},
