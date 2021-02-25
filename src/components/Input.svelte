@@ -2,6 +2,7 @@
   export let prop = '';
   export let label = '';
   export let code = false;
+  export let password = '';
   /*
   const inputCode = document.querySelector('.input-code');
   const inputs = inputCode.querySelectorAll('.input');
@@ -25,6 +26,12 @@
     <input type="text" inputmode="numeric" maxlength="1" />
     <input type="text" inputmode="numeric" maxlength="1" />
   </div>
+{:else if password}
+  <div class="input-field">
+    <label for={label}>{label}</label> 
+    <input name={label}
+      type="password" bind:value={prop}>
+  </div>
 {:else}
   <div class="input-field">
     <label for={label}>{label}</label> 
@@ -39,25 +46,22 @@
     height: 3em;
     margin: .5em;
     font-size: 20px;
-    font-family: 'Quicksand', sans-serif;
     text-align: center;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 1px solid #D5D5D5;
+    filter: drop-shadow(0px 1px 1px rgba(117, 116, 116, 0.12));
   }
 
   .input-field {
     gap: 1em;
     display: flex;
     flex-direction: column;
-    text-transform: uppercase;
     text-align: left;
   }
 
   .input-field input {
-    height: 52px;
-    width: 297px;
-    font-size: 1em;
-    text-indent: 1em;
-    border: 1px solid #A29898;
-    font-family: 'Quicksand', sans-serif;
+    @apply h-12 w-72 px-3 text-base border border-moe-gray-light rounded appearance-none;
   }
 </style>
 

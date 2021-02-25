@@ -9,15 +9,12 @@
 
 <style>
   .box {
-    width: 50em;
     height: 37.5em;
-    margin-top: 3rem;
-    gap: 1em;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
-    border: solid 1px #000;
+    border-radius: 5px;
     background: #fff;
   }  
 
@@ -41,10 +38,6 @@
     justify-content: space-between;
   }
   
-  .l-width {
-    width: 60em;
-  }
-
   .sm-height {
     height: 24em;
   }

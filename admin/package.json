@@ -1,5 +1,5 @@
 {
-  "name": "kas-moe-back",
+  "name": "kas-moe-admin",
   "scripts": {
     "eslint": "eslint",
     "eslint:fix": "eslint --fix ./*.js ./src/*.js ./src/routes/**/*.svelte ./src/components/**/*.svelte",

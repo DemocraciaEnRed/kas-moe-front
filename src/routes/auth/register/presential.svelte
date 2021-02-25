@@ -1,5 +1,5 @@
 <script>
-  import Box from '$components/Box.svelte';
+  import Box from '../../../components/Box.svelte';
 </script>
 
 <Box>

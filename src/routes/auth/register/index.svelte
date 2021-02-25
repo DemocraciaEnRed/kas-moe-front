@@ -1,87 +1,85 @@
 <script>
-  import { title } from '$util/store';
+  import { title } from 'util/store';
  	import { onMount } from 'svelte';
-  import { goto } from '$app/navigation';
-  import Box from '$components/Box.svelte';
-	import Button from '$components/Button.svelte';
-	import Input from '$components/Input.svelte';
+  import { goto } from '@sapper/app';
+  import Box from '../../../components/Box.svelte';
+  import Button from '../../../components/Button.svelte';
+	import Input from '../../../components/Input.svelte';
   
 	onMount(() => { 
-    title.set('Registro');
+    title.set('Iniciar sesión');
   });
 
   let InputValue = '';
 
   function submit() {
-    InputValue.length !== 0 ? goto('/auth') : goto('join'); 
+    InputValue.length !== 0 ? goto('/auth/success') : null; 
   }
 </script>
 
-<main>
-  <Box class="xsm-height row justify-between">
-    <div class="progress">  
-      <h2>
-        Ingreso de tus datos
-      </h2>
-      <h2>
-        1/3
-      </h2>
-      <Button onclick={()=>goto('/auth/register/picture')}>
-        Siguiente
+<div class="wrapper">
+  <div class="stepper">
+    <div class="flex gap-4 items-center">
+      <svg width="47" height="49" viewBox="0 0 47 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26.769 2.51379C33.0656 3.4457 38.7341 6.84076 42.5275 11.9521L23.2552 26.2552L26.769 2.51379Z" fill="#C4C4C4" stroke="#F06543" stroke-width="4"/>
+          <circle cx="22.5" cy="26.5" r="22.5" fill="#ECF2FF"/>
+        <path d="M7.12713 32V30.7273L11.0646 26.6477C11.4851 26.2045 11.8317 25.8163 12.1044 25.483C12.3809 25.1458 12.5874 24.8258 12.7237 24.5227C12.8601 24.2197 12.9283 23.8977 12.9283 23.5568C12.9283 23.1705 12.8374 22.8371 12.6555 22.5568C12.4737 22.2727 12.2256 22.0549 11.9112 21.9034C11.5968 21.7481 11.2427 21.6705 10.8487 21.6705C10.4321 21.6705 10.0684 21.7557 9.75781 21.9261C9.44721 22.0966 9.20857 22.3371 9.0419 22.6477C8.87524 22.9583 8.7919 23.322 8.7919 23.7386H7.11577C7.11577 23.0303 7.27865 22.411 7.6044 21.8807C7.93016 21.3504 8.37713 20.9394 8.94531 20.6477C9.51349 20.3523 10.1593 20.2045 10.8828 20.2045C11.6139 20.2045 12.2578 20.3504 12.8146 20.642C13.3752 20.9299 13.8127 21.3239 14.1271 21.8239C14.4415 22.3201 14.5987 22.8807 14.5987 23.5057C14.5987 23.9375 14.5173 24.3598 14.3544 24.7727C14.1953 25.1856 13.9169 25.6458 13.5192 26.1534C13.1214 26.6572 12.5684 27.2689 11.8601 27.9886L9.54759 30.4091V30.4943H14.7862V32H7.12713ZM20.7805 32.1591C20.0684 32.1591 19.4283 32.0227 18.8601 31.75C18.2957 31.4735 17.8449 31.0947 17.5078 30.6136C17.1707 30.1326 16.9908 29.5833 16.968 28.9659H18.6726C18.7143 29.4659 18.9358 29.8769 19.3374 30.1989C19.7389 30.5208 20.2199 30.6818 20.7805 30.6818C21.2275 30.6818 21.6233 30.5795 21.968 30.375C22.3165 30.1667 22.5893 29.8807 22.7862 29.517C22.987 29.1534 23.0874 28.7386 23.0874 28.2727C23.0874 27.7992 22.9851 27.3769 22.7805 27.0057C22.576 26.6345 22.2938 26.3428 21.9339 26.1307C21.5779 25.9186 21.1688 25.8106 20.7067 25.8068C20.3544 25.8068 20.0002 25.8674 19.6442 25.9886C19.2881 26.1098 19.0002 26.2689 18.7805 26.4659L17.1726 26.2273L17.826 20.3636H24.2237V21.8693H19.2862L18.9169 25.125H18.9851C19.2124 24.9053 19.5135 24.7216 19.8885 24.5739C20.2673 24.4261 20.6726 24.3523 21.1044 24.3523C21.8127 24.3523 22.4434 24.5208 22.9964 24.858C23.5533 25.1951 23.9908 25.6553 24.3089 26.2386C24.6309 26.8182 24.79 27.4848 24.7862 28.2386C24.79 28.9924 24.6196 29.6648 24.2749 30.2557C23.9339 30.8466 23.4605 31.3125 22.8544 31.6534C22.2521 31.9905 21.5608 32.1591 20.7805 32.1591ZM32.9354 29.8182V29.2045C32.9392 28.7652 33.032 28.3636 33.2138 28C33.3994 27.6326 33.6683 27.339 34.0206 27.1193C34.3729 26.8958 34.8009 26.7841 35.3047 26.7841C35.8198 26.7841 36.2517 26.8939 36.6001 27.1136C36.9486 27.3333 37.2119 27.6269 37.3899 27.9943C37.5717 28.3617 37.6626 28.7652 37.6626 29.2045V29.8182C37.6626 30.2576 37.5717 30.661 37.3899 31.0284C37.2081 31.392 36.9411 31.6856 36.5888 31.9091C36.2403 32.1288 35.8123 32.2386 35.3047 32.2386C34.7933 32.2386 34.3615 32.1288 34.0092 31.9091C33.657 31.6856 33.3899 31.392 33.2081 31.0284C33.0301 30.661 32.9392 30.2576 32.9354 29.8182ZM34.2592 29.2045V29.8182C34.263 30.1439 34.3407 30.4394 34.4922 30.7045C34.6475 30.9697 34.9183 31.1023 35.3047 31.1023C35.6873 31.1023 35.9543 30.9697 36.1058 30.7045C36.2573 30.4394 36.3331 30.1439 36.3331 29.8182V29.2045C36.3331 28.8788 36.2592 28.5833 36.1115 28.3182C35.9676 28.053 35.6986 27.9205 35.3047 27.9205C34.9259 27.9205 34.657 28.053 34.4979 28.3182C34.3426 28.5833 34.263 28.8788 34.2592 29.2045ZM27.0831 23.1591V22.5455C27.0831 22.1061 27.174 21.7027 27.3558 21.3352C27.5414 20.9678 27.8104 20.6742 28.1626 20.4545C28.5187 20.2348 28.9486 20.125 29.4524 20.125C29.9676 20.125 30.3994 20.2348 30.7479 20.4545C31.0964 20.6742 31.3596 20.9678 31.5376 21.3352C31.7157 21.7027 31.8047 22.1061 31.8047 22.5455V23.1591C31.8047 23.5985 31.7138 24.0019 31.532 24.3693C31.3539 24.733 31.0888 25.0265 30.7365 25.25C30.388 25.4697 29.96 25.5795 29.4524 25.5795C28.9373 25.5795 28.5036 25.4697 28.1513 25.25C27.8028 25.0265 27.5376 24.733 27.3558 24.3693C27.174 24.0019 27.0831 23.5985 27.0831 23.1591ZM28.4126 22.5455V23.1591C28.4126 23.4848 28.4884 23.7803 28.6399 24.0455C28.7952 24.3106 29.0661 24.4432 29.4524 24.4432C29.8312 24.4432 30.0964 24.3106 30.2479 24.0455C30.4032 23.7803 30.4808 23.4848 30.4808 23.1591V22.5455C30.4808 22.2197 30.407 21.9242 30.2592 21.6591C30.1115 21.3939 29.8426 21.2614 29.4524 21.2614C29.0736 21.2614 28.8047 21.3939 28.6456 21.6591C28.4903 21.9242 28.4126 22.2197 28.4126 22.5455ZM27.5547 32L35.5547 20.3636H36.9126L28.9126 32H27.5547Z" fill="#0A0B38"/>
+      </svg>    
+      <h3 class="text-xl text-moe-blue">
+        Registra tus datos para poder votar
+      </h3>
+    </div>
+    <div>
+      <Button class="transparent">
+        <a href="/auth">
+          Cancelar
+        </a>
+      </Button>
+      <Button class="blue">
+        <a href="/auth/register/picture">
+          Siguiente
+        </a>
       </Button>
     </div>
-  </Box>
-  <Box class="xsm-margin-top l-width">
-    <div class="step">
-      <h2>
-        Registro del votante
-      </h2>
+  </div>
+  <Box class="w-8/12">
+    <h2>
+      Ingresa tus datos de identidad
+    </h2>
+    <div class="grid grid-cols-2 gap-4 gap-x-16">  
       <Input label="Nro de documento" bind:prop="{InputValue}"/>
-      <div class="two-columns">  
-        <Input label="Nombre" bind:prop="{InputValue}"/>
-        <Input label="Apellido" bind:prop="{InputValue}"/>
-        <Input label="Email" bind:prop="{InputValue}"/>
-        <Input label="Confirmar tu email" bind:prop="{InputValue}"/>
-      </div>
-      <p>
-        ¿Aceptas los terminos de votación?
-      </p>
+      <Input label="Nombre y apellido" bind:prop="{InputValue}"/>
+      <Input label="Email" bind:prop="{InputValue}"/>
+      <Input label="Confirmar tu email" bind:prop="{InputValue}"/>
+      <Input label="Contraseña" bind:prop="{InputValue}"/>
+      <Input label="Repetir contraseña" bind:prop="{InputValue}"/>
+    </div>
+    <div class="pl-12 flex flex-col self-start">
+      <label class="inline-flex items-center mt-3 pr-8">
+        <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600"><span class="ml-2 text-gray-700"></span>
+        <p>Acepto los terminos y condiciones</p>
+      </label>
+      <a href="/auth/recover" class="my-5 text-moe-blue underline">
+        Ver términos y condiciones
+      </a>
     </div>
   </Box>
-</main>
+</div>
 
 <style>
-  h2, p {
-    font-weight: 400;
-    align-self: center;
-    text-transform: uppercase;
+  .wrapper {
+    @apply p-8 gap-4 h-full flex flex-col items-center bg-moe-cyan;
   }
 
-  main {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  .stepper {
+    @apply w-8/12 h-20 p-6 flex justify-between items-center bg-moe-cyan-dark rounded-md;
   }
 
-  .progress {
-    width: 100%;
-    padding: 2em;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr .3fr .5fr;
+  h2 {
+    @apply pl-12 self-start text-xl font-medium text-moe-blue;
   }
 
-  .step {
-    width: 100%;
-    display: grid;
-    justify-content: space-around;
-    grid-template-rows: 1fr 1fr 2fr 1fr;   
-  }
-  
-  .two-columns {
-    display: grid;
-    grid-row-gap: 2.5em;
-    grid-column-gap: 5em;
-    grid-template-columns: 1fr 1fr;
+  p {
+    @apply text-lg;
   }
 </style>

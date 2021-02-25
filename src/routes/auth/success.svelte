@@ -1,7 +1,7 @@
 <script>
-  import { goto } from '$app/navigation';
-  import Box from '$components/Box.svelte';
-	import Button from '$components/Button.svelte';
+  import { goto } from '@sapper/app';
+  import Box from '../../components/Box.svelte';
+	import Button from '../../components/Button.svelte';
 </script>
 
 <main>

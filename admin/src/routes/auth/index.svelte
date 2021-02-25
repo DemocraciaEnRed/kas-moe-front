@@ -10,21 +10,19 @@
   let email = 'owner@example.org',
     password = 'user123';
 
+  let response;
+
   async function handleSubmit() {
-    await fetch('http://localhost:2000/session', {
-      method: 'POST',
+    response = await fetch('http://127.0.0.1:8000/test', {
+      method: 'GET',
       mode: 'cors',
-      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        email,
-        password
-      })
     });
 
-    window.location.href= '/';
+    console.log(await response.json());
+    //window.location.href= '/';
   }
 </script>
 
