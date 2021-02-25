@@ -4,7 +4,8 @@
   import { getData } from 'util/fetch';
 
   // Functions, definitions
-  export const getStatus = getData(`${base}/status`, false);
+  //export const getStatus = getData(`${base}/status`, false);
+  export const getStatus = '';
 </script>
 
 <script>
@@ -20,7 +21,7 @@
   $: active = $scroll;
   onMount(async () => {
     setInterval(async () => {
-      getData(`${base}/status`, false);
+      //getData(`${base}/status`, false);
       //setCounter($time);
     }, 1000);
   });
@@ -93,7 +94,7 @@
   }
 
   .timer {
-    @apply flex h-28 bg-white text-black
+    @apply flex h-24 md:h-28 bg-white text-black
       border border-moe-gray-medium rounded-xl;
   }
 
@@ -103,7 +104,7 @@
   }
 
   .square {
-    @apply w-40 self-center text-center;
+    @apply w-24 md:w-40 self-center text-center;
   }
 
   h1 {
