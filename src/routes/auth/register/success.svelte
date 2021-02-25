@@ -58,8 +58,9 @@
   .stepper {
     @apply w-8/12 h-20 p-6 flex justify-between items-center bg-moe-cyan-dark rounded-md;
   }
-
+  /*
   h2 {
     @apply pl-12 self-start text-xl font-medium text-moe-blue;
   }
+  */
 </style>
