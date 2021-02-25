@@ -2,21 +2,20 @@
   // Objects
   import { API_BASE_URL as base } from 'util/config';
   import { getR } from 'util/fetch';
-
-  // Functions, definitions
-  export const getRoll = getR(`${base}/roll`, false);
 </script>
 
 <script>
+  // Components
   import Button from '../../components/Button.svelte';
-  import { a, b, c } from 'util/store';
-  import { onMount, afterUpdate } from 'svelte';
+  // Objects
+  import { items } from 'util/data';
+  import { a, b, c } from 'util/store'; // Testing purposes
+  import { onMount } from 'svelte';
   
+  // Lifecycle
   let response;
-
+  // Testing puproses
   onMount(async () => {
-    /*
-    */
     setInterval(async () => {
       response = getR(`${base}/roll`, false);
       items[0].visible = $a;
@@ -26,39 +25,12 @@
       console.log(items[0].visible);
     }, 1000);
   });
-
-  let team = [
-    {avatar: 'gonzalez_gutierrez.jpg', name:'Maribel González Gutiérrez', role: 'Presidenta'},
-    {avatar: 'caceres_garcia.jpg', name:'Silvia Cáceres García', role: 'Vicepresidenta'},
-    {avatar: 'garcia_ballester.jpg', name:'María García Ballester', role: 'Tesorera'},
-    {avatar: 'juarez_martinez.jpg', name:'Anabel Juárez Martínez', role: 'Secretaria'},
-  ];
-
-  let items = [
-    { 
-      logo: `gid1.svg`,
-      header: 'Consejo Radical',
-      group: team,
-      visible: false,
-    },
-    { 
-      logo: `gid2.svg`,
-      header: 'Claro que sí',
-      group: team,
-      visible: false,
-    },
-    { 
-      logo: `gid3.svg`,
-      header: 'Consejo Radical',
-      group: team,
-      visible: false,
-    },
-  ]
 </script>
 
 <div class="w-full h-full flex flex-col">
   <div class="header flex justify-center items-center">
     <div class="w-96 h-16 flex justify-center items-center bg-white rounded-md">
+      <!-- svelte-ignore component-name-lowercase -->
       <h1 class="text-3xl font-inter">Bloque: <b>Directivos</b></h1>
     </div>
   </div>
@@ -75,8 +47,8 @@
         </h3>
       </div>
       <div>
-        <Button class="transparent">Cancelar</Button>
-        <Button class="blue">Siguiente</Button>
+        <Button class="w-36 h-11 transparent">Cancelar</Button>
+        <Button class="w-36 h-11 bg-moe-blue text-white uppercase">Siguiente</Button>
       </div>
     </div>
     <div class="step">
@@ -108,7 +80,7 @@
             </div>
           </div>
           <div class="card-action">
-            <Button class="transparent">Seleccionar</Button>
+            <Button class="w-36 h-11 transparent">Seleccionar</Button>
           </div>
         </div>
       {/if}
