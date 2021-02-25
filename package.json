@@ -1,5 +1,6 @@
 {
   "name": "kas-moe-front",
+  "license": "MPL-2.0",
   "scripts": {
     "eslint": "eslint",
     "eslint:fix": "eslint --fix ./*.js ./src/*.js ./src/routes/**/*.svelte ./src/components/**/*.svelte",
