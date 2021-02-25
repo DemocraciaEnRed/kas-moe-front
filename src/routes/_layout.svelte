@@ -20,6 +20,7 @@
 
 <svelte:window bind:scrollY/>
 
+{#if !($page.path).includes('admin')}
 <div class="layout">
   <div class="header" class:active>
     <Header {segment}/>
@@ -34,6 +35,9 @@
     </main>
   </div>
 </div>
+{:else}
+  <slot/>
+{/if}
 
 <style>
   .layout {

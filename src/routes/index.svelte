@@ -12,6 +12,7 @@
   // Lifecycle
 	onMount(async () => {
     title.set('Democracias cotidianas');
+    status.set('vote');
   });
 </script>
 
