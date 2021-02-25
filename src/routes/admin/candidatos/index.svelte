@@ -7,9 +7,6 @@
   // Objects
   import { API_BASE_URL as base } from 'util/config';
   import { getData } from 'util/fetch';
-
-  // Functions, definitions
-  export const getRoll = getData(`${base}/roll`, false);
 </script>
 
 <script>
@@ -224,7 +221,7 @@
               </td>
               <!--
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                  <a href="#noop" class="text-indigo-600 hover:text-indigo-900">Editar</a>
                 </td>
               -->
             </tr>

@@ -35,7 +35,7 @@
       </h2>
       <p class="mt-2 text-center text-sm text-gray-600">
         ¿Necesitas ayuda?
-        <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+        <a href="#help" class="font-medium text-indigo-600 hover:text-indigo-500">
           Contacta un administrador
         </a>
       </p>
@@ -61,7 +61,7 @@
         </div>
 
         <div class="text-sm">
-          <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+          <a href="#forgot" class="font-medium text-indigo-600 hover:text-indigo-500">
             ¿Olvidaste tu contraseña?
           </a>
         </div>

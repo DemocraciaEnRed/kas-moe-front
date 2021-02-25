@@ -83,8 +83,9 @@
     });
   }
 
-  export let responsive = false;
-  export let type, data, options, width, height;
+  //export let responsive = false;
+  //export let type, data, options, width, height;
+  export let width, height;
 </script>
 
 <canvas {width} {height} bind:this={chartElement} />

@@ -1,13 +1,13 @@
 <script context="module">
 	export async function preload(page, session) {
-		if (!session.authenticated) {
+    if (!session.authenticated) {
 			return this.redirect(302, '/auth');
 		}
 	};
 </script>
 
 <script>
-  import Chart from '../components/Chart.svelte';
+  import Chart from '../../components/admin/Chart.svelte';
   import { goto, stores } from '@sapper/app'
   
   const { session } = stores()
@@ -48,7 +48,7 @@
   <!-- Chart cards (Four columns grid) -->
   <div class="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2 lg:grid-cols-4">
 
-    <a href="#" class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+    <a href="#views" class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
       <div class="flex items-start">
         <div class="flex flex-col flex-shrink-0 space-y-2">
           <span class="text-gray-400">Vistas</span>
@@ -64,7 +64,7 @@
       </div>
     </a>  
 
-    <a href="#" class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+    <a href="#users" class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
       <div class="flex items-start">
         <div class="flex flex-col flex-shrink-0 space-y-2">
           <span class="text-gray-400">Usuarios totales</span>
@@ -82,7 +82,7 @@
       -->
     </a>
 
-    <a href="#" class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+    <a href="#votes" class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
       <div class="flex items-start">
         <div class="flex flex-col flex-shrink-0 space-y-2">
           <span class="text-gray-400">Votos efectuados</span>
@@ -97,7 +97,7 @@
       </div>
     </a>
 
-    <a href="#" class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
+    <a href="#sessions" class="p-4 transition-shadow border rounded-lg shadow-sm hover:shadow-lg">
       <div class="flex items-start">
         <div class="flex flex-col flex-shrink-0 space-y-2">
           <span class="text-gray-400">Sesiones</span>
@@ -145,7 +145,7 @@
               <span class="text-sm font-medium text-gray-400">Retweet</span>
             </div>
           </div>
-          <a href="#" class="flex items-center px-2 py-1 space-x-2 text-sm text-white bg-blue-600 rounded-md">
+          <a href="#oauth" class="flex items-center px-2 py-1 space-x-2 text-sm text-white bg-blue-600 rounded-md">
             <span>Acceder</span>
             <span class="">
               <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -176,7 +176,7 @@
               <span class="text-sm font-medium text-gray-400">Hoja de datos</span>
             </div>
           </div>
-          <a href="#" class="flex items-center px-2 py-1 space-x-2 text-sm text-white bg-blue-600 rounded-md">
+          <a href="#oauth" class="flex items-center px-2 py-1 space-x-2 text-sm text-white bg-blue-600 rounded-md">
             <span>Acceder</span>
             <span class="">
               <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -188,7 +188,7 @@
         <li class="pt-4 text-sm font-medium text-gray-400">
           <p>
             También puedes
-            <a href="#" class="font-normal text-blue-500 hover:underline whitespace-nowrap">descargar un archivo<br> de valores separados por coma</a>
+            <a href="#download" class="font-normal text-blue-500 hover:underline whitespace-nowrap">descargar un archivo<br> de valores separados por coma</a>
           </p>
         </li>
       </ul>
@@ -266,7 +266,7 @@
                   </td>
                   <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">Admin</td>
                   <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    <a href="#noop" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                   </td>
                 </tr>
               </template>

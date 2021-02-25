@@ -1,7 +1,7 @@
 <script>
-	export let segment = "";
+	//export let segment = "";
 	// eslint-disable-next-line no-empty
-	import Nav from '../components/Nav.svelte';
+	import Nav from '../../components/admin/Nav.svelte';
 	import { stores } from "@sapper/app";
 
 	const { page, session } = stores();

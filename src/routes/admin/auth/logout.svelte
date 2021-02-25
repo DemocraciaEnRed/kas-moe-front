@@ -1,5 +1,6 @@
 <script context="module">
   export async function preload (page, session) {
+    /*
     await this.fetch('http://localhost:2000/session', {
       method: 'DELETE',
       mode: 'cors',
@@ -8,6 +9,7 @@
         'Content-Type': 'application/json'
       }
     });
+    */
   }
 </script>
 
@@ -18,5 +20,5 @@
 
   session.set({ authenticated: false, profile: null });
 
-  goto('/');
+  goto('/admin/auth');
 </script>
