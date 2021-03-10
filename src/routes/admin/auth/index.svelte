@@ -7,7 +7,6 @@
 </script>
 
 <script>
-  import { API_BASE_URL } from 'util/config';
   // Libs
   import axios from 'axios';
   import Form from "@svelteschool/svelte-forms";
@@ -16,6 +15,8 @@
   let values;
 
   const { session } = stores();
+
+  const base_url = $session.API_BASE_URL;
 
   // Functions
   async function handleSubmit() {
@@ -31,7 +32,7 @@
       }
     }
 
-    let url = `${API_BASE_URL}/auth/jwt/login/`;
+    let url = `${base_url}/auth/jwt/login/`;
 
     if (process.browser) {
       axios.post(url, params, config)

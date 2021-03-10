@@ -5,15 +5,16 @@
   import Button from '../../../components/Button.svelte';
   // Builtints
   import { onMount } from 'svelte';
-  import { goto } from '@sapper/app';
+  import { goto, stores } from '@sapper/app';
   // Objects
   import { title } from 'util/store';
-  import { API_BASE_URL } from 'util/config';
 
   // Libs
   import axios from 'axios';
   import Form from "@svelteschool/svelte-forms";
   
+  const { session } = stores();
+
   // Lifecycle
   let values, tos = false;
   //let InputValue = '';
@@ -52,7 +53,9 @@
       }
     }
     
-    let url = `${API_BASE_URL}/auth/register/`;
+    const base_url = $session.API_BASE_URL;
+
+    let url = `${base_url}/auth/register/`;
     
     axios.post(url, params, config)
     .then((response) => {

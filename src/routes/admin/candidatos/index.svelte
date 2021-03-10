@@ -5,13 +5,15 @@
 		}
   };  
   // Objects
-  import { API_BASE_URL as base } from 'util/config';
   import { getData } from 'util/fetch';
 </script>
 
 <script>
-	import { onMount, afterUpdate } from 'svelte';
+  import { onMount, afterUpdate } from 'svelte';
+  import { stores } from '@sapper/app';
   import { a, b, c } from 'util/store';
+
+  const { session } = stores();
 
   let status = [
     true,
@@ -27,10 +29,12 @@
     */
   });
 
+  const base_url = $session.API_BASE_URL;
+  
   let response;
 
   afterUpdate(async () => {
-    response = getData(`${base}/roll`, false);
+    response = getData(`${base_url}/roll`, false);
     handleSubmit();
     console.clear();
     console.log('A: ', $a);

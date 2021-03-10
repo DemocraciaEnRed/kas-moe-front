@@ -5,7 +5,6 @@
 	import Button from '../../components/Button.svelte';
   // Objects
   import { title, action } from 'util/store';
-  import { API_BASE_URL } from 'util/config';
   // Builtins
   import { onMount } from 'svelte';
   import { goto, stores } from '@sapper/app';
@@ -35,8 +34,10 @@
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
+
+    const base_url = $session.API_BASE_URL;
     
-    let url = `${API_BASE_URL}/auth/jwt/login/`;
+    let url = `${base_url}/auth/jwt/login/`;
 
     if (process.browser) {
       axios.post(url, params, config)
