@@ -26,7 +26,7 @@
       Ingresa el código que llegó a<br> tu numero de WhatsApp
     </p>
     <Input bind:prop={InputValue} code/>
-    <Button class="disabled">
+    <Button class="disabled bg-moe-blue text-white w-44 h-11 font-medium">
       Ingresar
     </Button>
   </Box>

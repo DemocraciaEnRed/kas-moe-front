@@ -29,12 +29,12 @@
       </h3>
     </div>
     <div>
-      <Button class="transparent">
+      <Button class="transparent w-36">
         <a href="/auth">
           Cancelar
         </a>
       </Button>
-      <Button class="blue">
+      <Button class="bg-moe-blue text-white w-36 h-11 font-medium">
         <a href="/auth/register/success">
           Siguiente
         </a>

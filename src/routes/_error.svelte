@@ -5,6 +5,10 @@
 </script>
 
 <style>
+	.wrapper {
+		@apply h-full flex flex-col justify-center items-center;
+	} 
+
 	h1, p {
 		margin: 0 auto;
 	}
@@ -27,10 +31,12 @@
 	<title>{status}</title>
 </svelte:head>
 
-<h1>{status}</h1>
-
-<p>{error.message}</p>
-
-{#if dev && error.stack}
-	<pre>{error.stack}</pre>
-{/if}
+<div class="wrapper">
+	<h1>{status}</h1>
+	
+	<!-- <p>{error.message}</p> -->
+	
+	{#if dev && error.stack}
+		<pre>{error.stack}</pre>
+	{/if}
+</div>
