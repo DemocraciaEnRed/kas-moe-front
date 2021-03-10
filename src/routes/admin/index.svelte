@@ -1,7 +1,7 @@
 <script context="module">
 	export async function preload(page, session) {
-    if (!session.authenticated) {
-			return this.redirect(302, '/auth');
+    if (!session.user) {
+			return this.redirect(302, '/admin/auth');
 		}
 	};
 </script>
@@ -37,7 +37,7 @@
 	<title>Sapper project template</title>
 </svelte:head>
 
-{#if $session.authenticated}
+{#if $session.user}
   <!-- Main content header -->
   <div class="flex flex-col items-start justify-between pb-6 space-y-4 border-b lg:items-center lg:space-y-0 lg:flex-row">
     <h1 class="text-2xl font-semibold whitespace-nowrap">Dashboard</h1>

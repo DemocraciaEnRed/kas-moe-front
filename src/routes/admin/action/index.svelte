@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload (page, session) {
 		/*
-    if (!session.authenticated) {
+    if (!session.user) {
 			return this.redirect(302, '/auth');
 		} else return {
       profile: session.profile

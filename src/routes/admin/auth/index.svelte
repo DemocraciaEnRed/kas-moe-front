@@ -1,28 +1,53 @@
 <script context="module">
 	export async function preload(page, session) {
-		if (session.authenticated) {
+		if (session.user) {
 			return this.redirect(302, '/');
 		}
 	};
 </script>
 
 <script>
-  let email = 'owner@example.org',
-    password = 'user123';
+  import { API_BASE_URL } from 'util/config';
+  // Libs
+  import axios from 'axios';
+  import Form from "@svelteschool/svelte-forms";
+  // Builtins
+  import { goto, stores } from '@sapper/app';
+  let values;
 
-  let response;
+  const { session } = stores();
 
+  // Functions
   async function handleSubmit() {
-    response = await fetch('http://127.0.0.1:8000/test', {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    });
 
-    console.log(await response.json());
-    //window.location.href= '/';
+    const params = new URLSearchParams()
+
+    params.append('username', values.email)
+    params.append('password', values.password)
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
+
+    let url = `${API_BASE_URL}/auth/jwt/login/`;
+
+    if (process.browser) {
+      axios.post(url, params, config)
+      .then((response) => {
+        if(response.status === 200) {
+          $session.access_token = response.data.access_token;
+          $session.user = {
+            id: 'CI 21.304.0930',
+            name: values.email
+          };
+          goto('/admin');
+        }
+      }, (error) => {
+        console.log(error);
+      });
+    }
   }
 </script>
 
@@ -43,14 +68,16 @@
     <form class="mt-8 space-y-6" method="POST" on:submit|preventDefault={handleSubmit}>
       <input type="hidden" name="remember" value="true">
       <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          <label for="email-address" class="sr-only">Email</label>
-          <input bind:value={email} id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email">
-        </div>
-        <div>
-          <label for="password" class="sr-only">Contraseña</label>
-          <input bind:value={password} id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Contraseña">
-        </div>
+        <Form bind:values>
+          <div>
+            <label for="email-address" class="sr-only">Email</label>
+            <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email">
+          </div>
+          <div>
+            <label for="password" class="sr-only">Contraseña</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Contraseña">
+          </div>
+        </Form>
       </div>
       <div class="flex items-center justify-between">
         <div class="flex items-center">
