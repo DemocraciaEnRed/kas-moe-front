@@ -1,6 +1,6 @@
 <script>
   // Inherited
-  export let segment;
+  //export let segment;
 
    // Components
   import Header from '../components/Header.svelte';
@@ -23,7 +23,7 @@
 {#if !($page.path).includes('admin')}
 <div class="layout">
   <div class="header" class:active>
-    <Header {segment}/>
+    <Header/>
   </div>
   <div class="content">
     <main>

@@ -1,6 +1,6 @@
 <script context="module">
   // Objects
-  import { API_BASE_URL as base } from 'util/config';
+  import { API_BASE_URL } from 'util/config';
   import { getR } from 'util/fetch';
 </script>
 
@@ -16,14 +16,19 @@
   let response;
   // Testing puproses
   onMount(async () => {
+    items[0].visible = true;
+    items[1].visible = true;
+    items[2].visible = true;
+    /*
     setInterval(async () => {
-      response = getR(`${base}/roll`, false);
+      response = getR(`${API_BASE_URL}/roll`, false);
       items[0].visible = $a;
       items[1].visible = $b;
       items[2].visible = $c;
       console.log($a);
       console.log(items[0].visible);
     }, 1000);
+    */
   });
 </script>
 

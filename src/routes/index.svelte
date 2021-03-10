@@ -8,17 +8,20 @@
   import { title, status } from 'util/store';
   // Library
   import { onMount } from 'svelte';
+  import { stores } from '@sapper/app';
+  const { session } = stores();
 
   // Lifecycle
 	onMount(async () => {
+    console.log($session.access_token);
     title.set('Democracias cotidianas');
     status.set('vote');
   });
 </script>
 
-{#if $status === 'prevote'}
+{#if $status === 'prevote' || !$session.user}
   <Prevote/>
-{:else if $status === 'vote'}
+{:else if $status === 'vote' && $session.user}
   <Vote/>
 {:else if $status === 'preresult'}
   <Preresult/>
