@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import sirv from 'sirv';
 import polka from 'polka';
 import { json } from 'body-parser';
@@ -8,6 +10,8 @@ import * as sapper from '@sapper/server';
 
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
+
+const { API_BASE_URL } = process.env;
 
 const FileStore = new sessionFileStore(session);
 
@@ -41,6 +45,7 @@ polka() // You can also use Express
 		session(setup),
 		sapper.middleware({
 			session: (req, res) => ({
+				API_BASE_URL,
 				user: req.session & req.session.user,
 				access_token: req.session & req.session.access_token,
 			})
