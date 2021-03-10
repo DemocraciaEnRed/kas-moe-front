@@ -1,91 +1,68 @@
 <script>
-  import { title } from '$util/store';
+  import { title } from 'util/store';
  	import { onMount } from 'svelte';
-  import { goto } from '$app/navigation';
-  import Box from '$components/Box.svelte';
-	import Button from '$components/Button.svelte';
-  import Counter from '$components/Counter.svelte';
-  import Input from '$components/Input.svelte';
+  import { goto } from '@sapper/app';
+  import Box from '../../../components/Box.svelte';
+  import Button from '../../../components/Button.svelte';
   
 	onMount(() => { 
-    title.set('Registro');
+    title.set('Iniciar sesión');
   });
 
   let InputValue = '';
 
   function submit() {
-    InputValue.length !== 0 ? goto('/auth') : goto('join'); 
+    InputValue.length !== 0 ? goto('/auth/success') : null; 
   }
 </script>
 
-<main>
-  <Box class="xsm-height row justify-between">
-    <div class="progress">  
-      <h2>
-        Procesando datos
-      </h2>
-      <h2>
-        3/3
-      </h2>
-      <Button onclick={()=>goto('/auth/register/success')}>
-        Finalizar
-      </Button>
-    </div>
-  </Box>
-  <Box class="l-width xsm-margin-top">
-    <div class="step">
-      <svg width="92" height="92" viewBox="0 0 92 92" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M92 17.25V74.75H0V17.25H92ZM6.42383 23L46 42.8105L85.5762 23H6.42383ZM86.25 69V29.1094L46 49.1895L5.75 29.1094V69H86.25Z" fill="black"/>
+<div class="wrapper">
+  <div class="stepper">
+    <div class="flex gap-4 items-center">
+      <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="26.2552" cy="26.2552" r="24" transform="rotate(8.41881 26.2552 26.2552)" fill="#C4C4C4" stroke="#68D684" stroke-width="4"/>
+        <circle cx="26.5" cy="25.5" r="22.5" fill="#ECF2FF"/>
+        <path d="M11.2997 20.3636V32H9.53835V22.125H9.47017L6.68608 23.9432V22.2614L9.58949 20.3636H11.2997ZM18.4986 32.1932C17.6009 32.1894 16.8338 31.9527 16.1974 31.483C15.5611 31.0133 15.0743 30.3295 14.7372 29.4318C14.4001 28.5341 14.2315 27.4527 14.2315 26.1875C14.2315 24.9261 14.4001 23.8485 14.7372 22.9545C15.0781 22.0606 15.5668 21.3788 16.2031 20.9091C16.8433 20.4394 17.6084 20.2045 18.4986 20.2045C19.3887 20.2045 20.152 20.4413 20.7884 20.9148C21.4247 21.3845 21.9115 22.0663 22.2486 22.9602C22.5895 23.8504 22.7599 24.9261 22.7599 26.1875C22.7599 27.4564 22.5914 28.5398 22.2543 29.4375C21.9171 30.3314 21.4304 31.0152 20.794 31.4886C20.1577 31.9583 19.3925 32.1932 18.4986 32.1932ZM18.4986 30.6761C19.2865 30.6761 19.902 30.2917 20.3452 29.5227C20.7921 28.7538 21.0156 27.642 21.0156 26.1875C21.0156 25.2216 20.9134 24.4053 20.7088 23.7386C20.508 23.0682 20.2183 22.5606 19.8395 22.2159C19.4645 21.8674 19.0175 21.6932 18.4986 21.6932C17.7145 21.6932 17.099 22.0795 16.652 22.8523C16.205 23.625 15.9796 24.7367 15.9759 26.1875C15.9759 27.1572 16.0762 27.9773 16.277 28.6477C16.4815 29.3144 16.7713 29.8201 17.1463 30.1648C17.5213 30.5057 17.9721 30.6761 18.4986 30.6761ZM28.8267 32.1932C27.929 32.1894 27.1619 31.9527 26.5256 31.483C25.8892 31.0133 25.4025 30.3295 25.0653 29.4318C24.7282 28.5341 24.5597 27.4527 24.5597 26.1875C24.5597 24.9261 24.7282 23.8485 25.0653 22.9545C25.4063 22.0606 25.8949 21.3788 26.5312 20.9091C27.1714 20.4394 27.9366 20.2045 28.8267 20.2045C29.7169 20.2045 30.4801 20.4413 31.1165 20.9148C31.7528 21.3845 32.2396 22.0663 32.5767 22.9602C32.9176 23.8504 33.0881 24.9261 33.0881 26.1875C33.0881 27.4564 32.9195 28.5398 32.5824 29.4375C32.2453 30.3314 31.7585 31.0152 31.1222 31.4886C30.4858 31.9583 29.7206 32.1932 28.8267 32.1932ZM28.8267 30.6761C29.6146 30.6761 30.2301 30.2917 30.6733 29.5227C31.1203 28.7538 31.3438 27.642 31.3438 26.1875C31.3438 25.2216 31.2415 24.4053 31.0369 23.7386C30.8362 23.0682 30.5464 22.5606 30.1676 22.2159C29.7926 21.8674 29.3456 21.6932 28.8267 21.6932C28.0426 21.6932 27.4271 22.0795 26.9801 22.8523C26.5331 23.625 26.3078 24.7367 26.304 26.1875C26.304 27.1572 26.4044 27.9773 26.6051 28.6477C26.8097 29.3144 27.0994 29.8201 27.4744 30.1648C27.8494 30.5057 28.3002 30.6761 28.8267 30.6761ZM41.1776 29.8182V29.2045C41.1813 28.7652 41.2741 28.3636 41.456 28C41.6416 27.6326 41.9105 27.339 42.2628 27.1193C42.6151 26.8958 43.0431 26.7841 43.5469 26.7841C44.062 26.7841 44.4938 26.8939 44.8423 27.1136C45.1908 27.3333 45.4541 27.6269 45.6321 27.9943C45.8139 28.3617 45.9048 28.7652 45.9048 29.2045V29.8182C45.9048 30.2576 45.8139 30.661 45.6321 31.0284C45.4503 31.392 45.1832 31.6856 44.831 31.9091C44.4825 32.1288 44.0545 32.2386 43.5469 32.2386C43.0355 32.2386 42.6037 32.1288 42.2514 31.9091C41.8991 31.6856 41.6321 31.392 41.4503 31.0284C41.2723 30.661 41.1813 30.2576 41.1776 29.8182ZM42.5014 29.2045V29.8182C42.5052 30.1439 42.5829 30.4394 42.7344 30.7045C42.8897 30.9697 43.1605 31.1023 43.5469 31.1023C43.9295 31.1023 44.1965 30.9697 44.348 30.7045C44.4995 30.4394 44.5753 30.1439 44.5753 29.8182V29.2045C44.5753 28.8788 44.5014 28.5833 44.3537 28.3182C44.2098 28.053 43.9408 27.9205 43.5469 27.9205C43.1681 27.9205 42.8991 28.053 42.7401 28.3182C42.5848 28.5833 42.5052 28.8788 42.5014 29.2045ZM35.3253 23.1591V22.5455C35.3253 22.1061 35.4162 21.7027 35.598 21.3352C35.7836 20.9678 36.0526 20.6742 36.4048 20.4545C36.7609 20.2348 37.1908 20.125 37.6946 20.125C38.2098 20.125 38.6416 20.2348 38.9901 20.4545C39.3385 20.6742 39.6018 20.9678 39.7798 21.3352C39.9579 21.7027 40.0469 22.1061 40.0469 22.5455V23.1591C40.0469 23.5985 39.956 24.0019 39.7741 24.3693C39.5961 24.733 39.331 25.0265 38.9787 25.25C38.6302 25.4697 38.2022 25.5795 37.6946 25.5795C37.1795 25.5795 36.7457 25.4697 36.3935 25.25C36.045 25.0265 35.7798 24.733 35.598 24.3693C35.4162 24.0019 35.3253 23.5985 35.3253 23.1591ZM36.6548 22.5455V23.1591C36.6548 23.4848 36.7306 23.7803 36.8821 24.0455C37.0374 24.3106 37.3082 24.4432 37.6946 24.4432C38.0734 24.4432 38.3385 24.3106 38.4901 24.0455C38.6454 23.7803 38.723 23.4848 38.723 23.1591V22.5455C38.723 22.2197 38.6491 21.9242 38.5014 21.6591C38.3537 21.3939 38.0848 21.2614 37.6946 21.2614C37.3158 21.2614 37.0469 21.3939 36.8878 21.6591C36.7325 21.9242 36.6548 22.2197 36.6548 22.5455ZM35.7969 32L43.7969 20.3636H45.1548L37.1548 32H35.7969Z" fill="#0A0B38"/>
       </svg>
-      <h2>
-        Te notificaremos una vez terminemos de<br>validar y procesar tus datos
-      </h2>
-      <p>
-        Te enviaremos un correo electronico avisandote que ya puedes<br>votar, mientras tanto puedes ver informarte de las candidaturas<br>y el proceso a través de la portada
-      </p>
-      <Button class="white" onclick={()=>goto('/')}>
-        Ir a la portada
-      </Button>
-      <p>
-        El proceso de votación iniciará en...
-      </p>
-      <Counter/>
+      <h3 class="text-xl text-moe-blue">
+        Ya completaste el registro
+      </h3>
     </div>
+    <div>
+      <Button class="disabled bg-moe-blue text-white w-36 h-11 font-medium">
+        <a href="/auth/register/success">
+          Finalizado
+        </a>
+      </Button>
+    </div>
+  </div>
+  <Box class="w-8/12 pt-10">
+    <span class="w-32 h-32 bg-moe-gray-medium rounded-full"></span>
+    <h2 class="text-center text-2xl font-bold text-moe-blue">
+      Te notificaremos una vez<br> terminemos de validar tus datos
+    </h2>
+    <p class="text-center w-3/4">
+      Te enviaremos un correo electronico avisandote que ya puedes votar, mientras tanto puedes ver informarte de las candidaturas y el proceso a través del inicio. 
+    </p>
+    <Button class="bg-moe-blue text-white w-36 h-11 font-medium">
+      <a href="/">
+        Ir al inicio
+      </a>
+    </Button>      
   </Box>
-</main>
+</div>
 
 <style>
-  h2, p {
-    font-weight: 400;
-    align-self: center;
-    text-transform: uppercase;
+  .wrapper {
+    @apply p-8 gap-4 h-full flex flex-col items-center bg-moe-cyan;
   }
 
-  p {
-    text-transform: initial;
-    font-family: 'Quicksand', sans-serif;
+  .stepper {
+    @apply w-8/12 h-20 p-6 flex justify-between items-center bg-moe-cyan-dark rounded-md;
   }
-
-  main {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  /*
+  h2 {
+    @apply pl-12 self-start ;
   }
-
-  .progress {
-    width: 100%;
-    padding: 2em;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 1fr .3fr .5fr;
-  }
-
-  .step {
-    width: 100%;
-    display: grid;
-    place-items: center;
-    justify-content: space-around;
-    grid-template-rows: .1fr .1fr .1fr .1fr; 
-    text-align: center;
-  }
+  */
 </style>

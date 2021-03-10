@@ -1,8 +1,19 @@
+const sveltePreprocess = require("svelte-preprocess");
+const postcss = require("./postcss.config");
+
+const createPreprocessors = ({ sourceMap }) => [
+	sveltePreprocess({
+		sourceMap,
+		defaults: {
+			style: "postcss",
+		},
+		postcss,
+	}),
+	// You could have more preprocessors, like mdsvex
+];
+
 module.exports = {
-	kit: {
-		// By default, `npm run build` will create a standard Node app.
-		// You can create optimized builds for different platforms by
-		// specifying a different adapter
-		adapter: '@sveltejs/adapter-node'
-	}
+	createPreprocessors,
+	// Options for `svelte-check` and the VS Code extension
+	preprocess: createPreprocessors({ sourceMap: true }),
 };

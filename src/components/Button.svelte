@@ -14,18 +14,7 @@
 
 <style>
   button {
-    color: #F8F8F8;
-    background: #000;
-    height: 42px;
-    min-width: 9.5em;
-    font-family: Oswald;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    text-transform: uppercase;
-    border: none;
-    box-shadow: -7px 7px 0px -2px #fff, -7px 7px 0px -1px #000;
+    @apply rounded-lg;
   }
 
   button:focus,
@@ -33,17 +22,47 @@
     outline: none;
   }
 
+  .sm {
+
+  }
+
+  .blue {
+    @apply text-sm font-medium text-white bg-moe-blue uppercase;
+  }
+
+  .red {
+    @apply h-11 w-64 text-sm text-white bg-moe-red flex gap-2 place-items-center place-content-center uppercase;
+  }
+
+  .disabled {
+    @apply h-11 text-xl font-medium uppercase;
+    background: #D5D5D5;
+    color: #5E5E5E;
+  }
+
   .green {
-    background: #31A608;
+    @apply h-11 w-64 text-sm text-white bg-moe-green flex gap-2 place-items-center place-content-center uppercase;
+  }
+
+  .sm-orange {
+    @apply h-8 w-64 text-xl font-medium text-white bg-moe-orange;
+  }
+      
+  .sm-green-light {
+    @apply h-8 w-64 text-xl font-medium text-white bg-moe-green-light;
+  }
+
+  .green-light {
+    @apply h-11 w-64 text-xl font-medium text-white bg-moe-green-light;
+  }
+
+  .transparent {
+    @apply h-11 text-sm text-moe-blue border border-moe-blue uppercase;
   }
 
   .white {
     border: solid 1px;
     background: #fff;
     color: #111;
-  }
-
-  .large {
-    width: 10.5em;
   }
 </style>
