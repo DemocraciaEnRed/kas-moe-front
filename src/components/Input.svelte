@@ -1,6 +1,8 @@
 <script>
-  export let prop = '';
+  export let disabled = '';
+  export let name = '';
   export let label = '';
+  export let placeholder = '';
   export let code = false;
   export let password = '';
   /*
@@ -29,14 +31,12 @@
 {:else if password}
   <div class="input-field">
     <label for={label}>{label}</label> 
-    <input name={label}
-      type="password" bind:value={prop}>
+    <input placeholder={placeholder} type="password" name={name}>
   </div>
 {:else}
   <div class="input-field">
     <label for={label}>{label}</label> 
-    <input name={label}
-      bind:value={prop}>
+    <input placeholder={placeholder} name={name} {disabled}>
   </div>
 {/if}
 
