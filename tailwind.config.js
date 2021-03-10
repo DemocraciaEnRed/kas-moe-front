@@ -37,6 +37,7 @@ module.exports = {
 				'moe-green': '#57a230',
 				'moe-green-light': '#68d684',
 				'moe-gray': '#c4c4c4',
+				'moe-gray-neutral': '#5e5e5e',
 				'moe-gray-medium': '#d8d8d8',
 				'moe-gray-light': '#d4d4d4',
 				'moe-orange': '#f06543',
