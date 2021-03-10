@@ -1,19 +1,59 @@
 <script>
-  import { title, action } from 'util/store';
- 	import { onMount } from 'svelte';
-  import { goto } from '@sapper/app';
+  // Components
   import Box from '../../components/Box.svelte';
-	import Button from '../../components/Button.svelte';
 	import Input from '../../components/Input.svelte';
-  
-	onMount(() => { 
+	import Button from '../../components/Button.svelte';
+  // Objects
+  import { title, action } from 'util/store';
+  import { API_BASE_URL } from 'util/config';
+  // Builtins
+  import { onMount } from 'svelte';
+  import { goto, stores } from '@sapper/app';
+  // Libs
+  import axios from 'axios';
+  import Form from "@svelteschool/svelte-forms";
+
+  const { session } = stores();
+
+  // Lifecycle
+  let values;
+
+	onMount(async () => { 
     title.set('Iniciar sesión');
   });
 
-  let password = '', email = '';
+  // Functions
+  async function handleSubmit() {
 
-  function submit() {
-    email.length !== 0 ? goto('/') : null; 
+    const params = new URLSearchParams()
+    
+    params.append('username', values.email)
+    params.append('password', values.password)
+    
+    const config = {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
+    
+    let url = `${API_BASE_URL}/auth/jwt/login/`;
+
+    if (process.browser) {
+      axios.post(url, params, config)
+      .then((response) => {
+        if(response.status === 200) {
+          $session.access_token = response.data.access_token;
+          $session.authenticated = true;
+          $session.user = {
+            id: 'CI 21.304.0930',
+            name: values.email
+          };
+          goto('/');
+        }
+      }, (error) => {
+        console.log(error);
+      });
+    }
   }
 </script>
 
@@ -25,16 +65,18 @@
     <p>
       Ingresa los datos de tu cuenta<br> para empezar a participar
     </p>
-    <div class="grid gap-6">
-      <Input label="Email" bind:prop="{email}"/>
-      <Input label="Contraseña" password='true' bind:prop="{password}"/>
-    </div>
-    <Button class="blue" onclick={submit}>
+    <Form bind:values>
+      <div class="grid gap-6">
+        <Input placeholder="Email" name="email"/>
+        <Input placeholder="Contraseña" password='true' name="password"/>
+      </div>
+    </Form>
+    <Button class="bg-moe-blue text-white w-36 h-11 font-medium" onclick={handleSubmit}>
       Validar
     </Button>
   </Box>
-  <a href="/auth" class="my-5 text-moe-blue underline">
-    No recuerdo mis datos de ingreso
+  <a href="/auth/identify" class="my-5 text-moe-blue">
+    Necesitas una cuenta? <span class="underline">Haz click aquí para registrarte.</span>
   </a>
 </div>
 

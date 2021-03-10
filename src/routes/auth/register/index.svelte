@@ -1,19 +1,72 @@
 <script>
-  import { title } from 'util/store';
- 	import { onMount } from 'svelte';
-  import { goto } from '@sapper/app';
+  // Components
   import Box from '../../../components/Box.svelte';
-  import Button from '../../../components/Button.svelte';
 	import Input from '../../../components/Input.svelte';
+  import Button from '../../../components/Button.svelte';
+  // Builtints
+  import { onMount } from 'svelte';
+  import { goto } from '@sapper/app';
+  // Objects
+  import { title } from 'util/store';
+  import { API_BASE_URL } from 'util/config';
+
+  // Libs
+  import axios from 'axios';
+  import Form from "@svelteschool/svelte-forms";
   
+  // Lifecycle
+  let values, tos = false;
+  //let InputValue = '';
 	onMount(() => { 
     title.set('Iniciar sesión');
   });
 
-  let InputValue = '';
+  // Functions
+  function handleSubmit() {
+    
+    if (values.email !== values.email_confirm) {
+      alert('Las direcciones e-mail no coinciden.');
+      values.email = '';
+      values.email_confirm = '';
+      return;
+    }
 
-  function submit() {
-    InputValue.length !== 0 ? goto('/auth/success') : null; 
+    if (values.password !== values.password_confirm) {
+      alert('Las contraseñas no coinciden.');
+      values.password = '';
+      values.password_confirm = '';
+      return;
+    }
+
+    const params = {
+      email: values.email,
+      password: values.password,
+      is_active: true,
+      is_admin: false,
+      is_verified: false
+    }
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+    
+    let url = `${API_BASE_URL}/auth/register/`;
+    
+    axios.post(url, params, config)
+    .then((response) => {
+      if(response.status >= 200 && response.status < 300 ) {
+        alert('Registro exitoso');
+        goto('/auth/register/success');
+      } else {
+        console.log(response);
+      }
+    }, (error) => {
+      alert('Hubo un error en el registro:');
+      alert(JSON.stringify(error));
+      console.log(error);
+    });
   }
 </script>
 
@@ -30,39 +83,41 @@
       </h3>
     </div>
     <div>
-      <Button class="transparent">
+      <Button class="transparent xl:w-36 w-28">
         <a href="/auth">
           Cancelar
         </a>
       </Button>
-      <Button class="blue">
-        <a href="/auth/register/picture">
+      <button on:click={handleSubmit} disabled={!tos}
+        class="{tos?'bg-moe-blue text-white':'bg-moe-gray-light text-moe-gray-neutral'} xl:w-36 w-28 h-11 font-medium rounded-lg uppercase">
           Siguiente
-        </a>
-      </Button>
+      </button>
     </div>
   </div>
-  <Box class="w-8/12">
+  <Box class="w-10/12 xl:w-8/12">
     <h2>
       Ingresa tus datos de identidad
     </h2>
-    <div class="grid grid-cols-2 gap-4 gap-x-16">  
-      <Input label="Nro de documento" bind:prop="{InputValue}"/>
-      <Input label="Nombre y apellido" bind:prop="{InputValue}"/>
-      <Input label="Email" bind:prop="{InputValue}"/>
-      <Input label="Confirmar tu email" bind:prop="{InputValue}"/>
-      <Input label="Contraseña" bind:prop="{InputValue}"/>
-      <Input label="Repetir contraseña" bind:prop="{InputValue}"/>
-    </div>
-    <div class="pl-12 flex flex-col self-start">
-      <label class="inline-flex items-center mt-3 pr-8">
-        <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600"><span class="ml-2 text-gray-700"></span>
-        <p>Acepto los terminos y condiciones</p>
-      </label>
-      <a href="/auth/recover" class="my-5 text-moe-blue underline">
-        Ver términos y condiciones
-      </a>
-    </div>
+    <Form bind:values>
+      <div class="grid grid-cols-2 gap-4 gap-x-16">  
+        <Input label="Nro de documento" name="id" disabled/>
+        <Input label="Nombre y apellido" name="fullname" disabled/>
+        <Input label="Email" name="email"/>
+        <Input label="Confirmar tu email" name="email_confirm"/>
+        <Input label="Contraseña" name="password" password/>
+        <Input label="Repetir contraseña" name="password_confirm" password/>
+      </div>
+      <div class="pt-8 flex flex-col self-start">
+        <label class="inline-flex items-center mt-3 pr-8">
+          <input type="checkbox" bind:checked={tos} class="form-checkbox h-5 w-5 text-gray-600">
+          <span class="ml-2 text-gray-700"></span>
+          <p>Acepto los terminos y condiciones</p>
+        </label>
+        <a href="/auth/success" class="my-5 text-moe-blue underline">
+          Ver términos y condiciones
+        </a>
+      </div>
+    </Form>
   </Box>
 </div>
 
@@ -72,7 +127,7 @@
   }
 
   .stepper {
-    @apply w-8/12 h-20 p-6 flex justify-between items-center bg-moe-cyan-dark rounded-md;
+    @apply w-10/12 xl:w-8/12 h-20 p-6 flex justify-between items-center bg-moe-cyan-dark rounded-md;
   }
 
   h2 {

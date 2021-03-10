@@ -5,15 +5,16 @@
   import Box from '../../components/Box.svelte';
 	import Button from '../../components/Button.svelte';
 	import Input from '../../components/Input.svelte';
-  
+  import Form from "@svelteschool/svelte-forms";
+
+  let values;
 	onMount(() => { 
     title.set('Iniciar sesión');
   });
 
-  let InputValue = '';
-
-  function submit() {
-    InputValue.length !== 0 ? goto('/auth/register') : null; 
+  function handleSubmit() {
+    // To-Do: Apply `yup` for string validation
+    values.email.length !== 0 ? goto('/auth/register') : null; 
   }
 </script>
 
@@ -27,11 +28,13 @@
         Parece que no estás en el padrón
       </h2>
       <p>
-       Si quieres participar proporcionanos tu email<br>para enviarte los pasos a seguir
+        Si quieres participar proporcionanos tu email<br>para enviarte los pasos a seguir
       </p>
     </div>
-    <Input label="Ingresa tu correo electrónico" bind:prop="{InputValue}"/>
-    <Button class="blue" onclick={submit}>
+    <Form bind:values>
+      <Input label="Ingresa tu correo electrónico" name="email"/>
+    </Form>
+    <Button class="bg-moe-blue text-white w-36 h-11 font-medium" onclick={handleSubmit}>
       Enviar
     </Button>
   </Box>
