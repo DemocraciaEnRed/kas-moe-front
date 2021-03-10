@@ -1,9 +1,3 @@
-<script context="module">
-  // Objects
-  import { API_BASE_URL } from 'util/config';
-  import { getR } from 'util/fetch';
-</script>
-
 <script>
   // Components
   import Button from '../../components/Button.svelte';
@@ -11,7 +5,11 @@
   import { items } from 'util/data';
   import { a, b, c } from 'util/store'; // Testing purposes
   import { onMount } from 'svelte';
-  
+  // Built-ins
+  //import { stores } from '@sapper/app';
+
+  //const { session } = stores();
+
   // Lifecycle
   let response;
   // Testing puproses

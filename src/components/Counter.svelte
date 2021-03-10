@@ -1,8 +1,4 @@
 <script context="module">
-  // Objects
-  import { API_BASE_URL as base } from 'util/config';
-  import { getData } from 'util/fetch';
-
   // Functions, definitions
   //export const getStatus = getData(`${base}/status`, false);
   export const getStatus = '';
