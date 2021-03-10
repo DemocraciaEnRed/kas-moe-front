@@ -13,7 +13,7 @@
   let InputValue = '';
 
   function submit() {
-    InputValue.length !== 0 ? goto('/auth') : goto('/auth/join'); 
+    goto('/auth/register'); 
   }
 </script>
 
@@ -25,8 +25,8 @@
     <p>
       Ingresa tu número de identificación
     </p>
-    <Input label="Nro de Documento" bind:prop="{InputValue}"/>
-    <Button class="blue" onclick={submit}>
+    <Input label="Nro de Documento"/>
+    <Button class="bg-moe-blue text-white w-36 h-11 font-medium" onclick={submit}>
       Validar
     </Button>
     <p>
@@ -39,8 +39,8 @@
       </svg>
     </Button>
   </Box>
-  <a href="/auth/recover" class="my-5 text-moe-blue underline">
-    No recuerdo mis datos de ingreso
+  <a href="/auth" class="my-5 text-moe-blue">
+    Ya estás registrado? <span class="underline">Podés acceder haciendo click aquí.</span>
   </a>
 </div>
 

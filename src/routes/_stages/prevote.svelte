@@ -39,10 +39,14 @@
     </div>
     <div class="flex flex-col sm:flex-row gap-6">
       <Button class="w-72 h-14 uppercase font-medium text-sm text-white border rounded-xl border-white">
-        Registro presencial
+        <a href="/auth/register">
+          Registro presencial
+        </a>
       </Button>
       <Button class="w-72 h-14 uppercase font-medium text-sm text-moe-blue border rounded-xl border-white  bg-white">
-        Registro digital
+        <a href="/auth/register">
+          Registro digital
+        </a>
       </Button>
     </div>
   </div>
