@@ -40,7 +40,7 @@
         if(response.status === 200) {
           $session.access_token = response.data.access_token;
           $session.user = {
-            id: 'CI 21.304.0930',
+            id: '<REDACTED>',
             name: values.email
           };
           goto('/admin');
