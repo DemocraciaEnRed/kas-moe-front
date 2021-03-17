@@ -137,7 +137,7 @@
 <div id="background" class:hidden on:click={() => (hidden = true)}>
   <div id="foreground" class:hidden>
     <slot name="input">
-      <input type="text" bind:value bind:this={inputEl} />
+      <input disabled type="text" bind:value bind:this={inputEl} />
     </slot>
     <div class="search-body">
       <ul class="list" bind:this={listEl}>
