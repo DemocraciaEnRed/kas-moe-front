@@ -247,6 +247,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
           </span>
+          <span style="opacity: 1;" class="hidden sm:block text-gray-400 text-sm leading-5 py-0.5 px-1.5 border border-gray-300 rounded-md"><span class="sr-only">Press </span><kbd class="font-sans"><abbr title="Control" class="no-underline">Ctrl </abbr></kbd><span class="sr-only"> and </span><kbd class="font-sans">K</kbd><span class="sr-only"> to search</span></span>
           <Search {options} {inputEl} bind:value on:pick={onPick} keys={['label', 'link', 'icon']}>
             <span slot="input" class="flex mx-6 items-center border-b border-gray-200">
               <form action role="search" novalidate class="search-header">
@@ -255,7 +256,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                   </svg>
                 </span>            
-                <input type="text" bind:value bind:this={inputEl} placeholder="Buscar usuarios, acciones, métricas..."
+                <input disabled type="text" bind:value bind:this={inputEl} placeholder="Buscar usuarios, acciones, métricas..."
                   class="h-16 w-100 min-w-0 text-lg px-4 py-3 md:py-2 md:flex-1 bg-transparent focus:outline-none"/>
               </form>
               <button class="search-cancel">Cancelar búsqueda</button>
