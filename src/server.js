@@ -7,11 +7,13 @@ import session from 'express-session';
 import sessionFileStore from 'session-file-store';
 import compression from 'compression';
 import * as sapper from '@sapper/server';
+import { v4 as uuidv4 } from "uuid";
+import helmet from 'helmet';
 
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
-const { API_BASE_URL } = process.env;
+const { API_BASE_URL, SESSION_ID } = process.env;
 
 const FileStore = new sessionFileStore(session);
 
@@ -25,7 +27,7 @@ var setup = {
   rolling: true,
   saveUninitialized: false,
   // Setup Rollup:
-  secret: 'e3c38f1b79811b54ee9e9faf9ce417581ab8a2bc22c355984143cedc18c788fd',
+  secret: SESSION_ID,
   store: new FileStore({
     path: `.sessions`
   })
@@ -36,13 +38,29 @@ if (!dev) {
   setup.cookie.secure = true;
 }
 
-
 polka() // You can also use Express
 	.use(
 		json(),
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),
-		session(setup),
+    session(setup),
+    (req, res, next) => {
+      res.locals = {};
+      res.locals.nonce = uuidv4();
+      next();
+    },
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          scriptSrc: [
+            "'self' 'unsafe-eval' blob:",
+            (req, res) => `'nonce-${res.locals.nonce}'`
+          ],
+          //styleSrc: "'unsafe-inline'",
+          defaultSrc: helmet.contentSecurityPolicy.dangerouslyDisableDefaultSrc,
+        }
+      }
+    }),
 		sapper.middleware({
 			session: (req, res) => ({
 				API_BASE_URL,
