@@ -11,8 +11,6 @@
 </script>
 
 <script>
-  export let profile
-
   let phase = 'vote';
   async function handleSubmit() {
     let date = '271293';
