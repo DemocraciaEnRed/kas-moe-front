@@ -56,7 +56,7 @@ polka() // You can also use Express
             "'self' 'unsafe-eval' blob:",
             (req, res) => `'nonce-${res.locals.nonce}'`
           ],
-          //styleSrc: "'unsafe-inline'",
+          styleSrc: "'self' 'unsafe-inline' fonts.googleapis.com",
           defaultSrc: helmet.contentSecurityPolicy.dangerouslyDisableDefaultSrc,
         }
       }
