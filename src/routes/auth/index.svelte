@@ -37,8 +37,31 @@
 
     const base_url = $session.API_BASE_URL;
     
+    console.log(base_url);
+
+    const fetch = process.browser ? window.fetch : require('node-fetch').default;
+
     let url = `${base_url}/auth/jwt/login/`;
 
+    let opts = {
+      method: 'POST'
+    };
+
+    opts.headers = {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    };
+
+    opts.body = params;
+
+    const request = await fetch(url, opts),
+      response = {
+        body: await request.text(),
+        status: request.status,
+        statusText: request.statusText,
+      };
+    
+    console.log(response);
+    /*
     if (process.browser) {
       axios.post(url, params, config)
       .then((response) => {
@@ -55,6 +78,7 @@
         console.log(error);
       });
     }
+    */
   }
 </script>
 
